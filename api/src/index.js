@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { config } from "dotenv";
 import healthRouter from "./routes/health.js";
+import authRouter from "./routes/auth.js";
 
 config();
 
@@ -11,7 +12,8 @@ const PORT = parseInt(process.env.PORT ?? "3000", 10);
 app.use(cors());
 app.use(express.json());
 
-app.use("/health", healthRouter);
+app.use("/api/health", healthRouter);
+app.use("/api/auth", authRouter);
 
 app.use((req, res) => {
   res.status(404).json({ error: "Not found" });
@@ -19,7 +21,8 @@ app.use((req, res) => {
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ error: "Internal server error" });
+  const status = err.status ?? 500;
+  res.status(status).json({ error: status === 500 ? "Internal server error" : err.message });
 });
 
 app.listen(PORT, "0.0.0.0", () => {
