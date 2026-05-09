@@ -28,3 +28,16 @@ tables: merchants, programs, referrals, payouts, webhook_events
 - NEVER generate code without a spec document first.
 - Always use plan mode before implementing a feature.
 - After each milestone, run /compact and commit.
+
+## Git workflow (SDD Flow)
+- Every feature starts from an up-to-date main branch.
+- Create a feature branch: `git checkout -b feature/<slug>`.
+- Commit after each milestone within the feature.
+- Push and open a PR only after verification passes (/verify).
+- Merge PR, then delete the feature branch and switch back to main.
+- Never commit directly to main.
+
+## Skills
+- Skills load on demand via YAML frontmatter in `.claude/skills/`.
+- Use `refnet-domain` skill for referral-specific patterns (idempotency, payout state machines, webhook dedup).
+- Keep skill bodies under 100 lines; reference external docs via @ imports for deeper detail.
