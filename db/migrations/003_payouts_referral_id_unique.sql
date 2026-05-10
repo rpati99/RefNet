@@ -1,0 +1,1 @@
+ALTER TABLE payouts ADD CONSTRAINT payouts_referral_id_unique UNIQUE (referral_id);

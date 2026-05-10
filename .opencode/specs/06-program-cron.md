@@ -14,11 +14,11 @@ A standalone worker service that runs on a cron schedule to process referral pay
 No new routes.
 
 ## Database changes
-None. All columns already exist on the `referrals` and `payouts` tables from Step 01.
+- `db/migrations/002_add_payout_processed_at.sql` — add `processed_at TIMESTAMPTZ` column to `payouts` table
+- `db/migrations/003_payouts_referral_id_unique.sql` — add `UNIQUE (referral_id)` constraint to `payouts` table for `ON CONFLICT` idempotency
 
 ## Files to change
 - `docker-compose.yml` — add the `worker` service definition
-- `api/src/db/pool.js` — export pool for use by worker (currently only imported by api)
 
 ## Files to create
 - `worker/Dockerfile` — Docker build for the worker service
@@ -29,6 +29,7 @@ None. All columns already exist on the `referrals` and `payouts` tables from Ste
 - `worker/src/services/payoutService.js` — business logic for processing payouts
 - `worker/package.json` — worker dependencies (pg, node-cron, dotenv)
 - `db/migrations/002_add_payout_processed_at.sql` — add `processed_at` column to `payouts` table for audit trail
+- `db/migrations/003_payouts_referral_id_unique.sql` — add unique constraint on `referral_id` for `ON CONFLICT` idempotency
 
 ## New dependencies
 - `worker/package.json`: `pg`, `node-cron`, `dotenv`
@@ -54,11 +55,11 @@ None. All columns already exist on the `referrals` and `payouts` tables from Ste
 - Use `ON CONFLICT` for idempotent payout creation (guard against duplicate runs)
 
 ## Definition of done
-- [ ] Worker container starts and connects to the database
-- [ ] Cron job runs on the configured schedule
-- [ ] Eligible referrals (status='eligible', order_id set) get a payout record created
-- [ ] Referral status updated to 'paid' after payout record is created
-- [ ] No duplicate payout records created for the same referral (idempotent)
-- [ ] `payouts.processed_at` set to current timestamp
-- [ ] Worker logs the number of payouts processed per run
-- [ ] All SQL queries use parameterised statements
+- [x] Worker container starts and connects to the database
+- [x] Cron job runs on the configured schedule
+- [x] Eligible referrals (status='eligible', order_id set) get a payout record created
+- [x] Referral status updated to 'paid' after payout record is created
+- [x] No duplicate payout records created for the same referral (idempotent)
+- [x] `payouts.processed_at` set to current timestamp
+- [x] Worker logs the number of payouts processed per run
+- [x] All SQL queries use parameterised statements
