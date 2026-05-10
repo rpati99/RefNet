@@ -6,6 +6,7 @@ import authRouter from "./routes/auth.js";
 import programsRouter from "./routes/programs.js";
 import advocatesRouter from "./routes/advocates.js";
 import refRouter from "./routes/ref.js";
+import webhooksRouter from "./routes/webhooks.js";
 
 config();
 
@@ -13,6 +14,7 @@ const app = express();
 const PORT = parseInt(process.env.PORT ?? "3000", 10);
 
 app.use(cors());
+app.use("/webhooks", webhooksRouter);
 app.use(express.json());
 
 app.use("/api/health", healthRouter);
