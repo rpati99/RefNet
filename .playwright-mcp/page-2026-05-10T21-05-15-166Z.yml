@@ -1,0 +1,40 @@
+- generic [ref=e46]:
+  - generic [ref=e48]:
+    - link "← Back to Dashboard" [ref=e49] [cursor=pointer]:
+      - /url: /dashboard
+    - heading "Referral Program 2026" [level=1] [ref=e50]
+  - generic [ref=e51]:
+    - generic [ref=e52]:
+      - generic [ref=e53]: Advocates
+      - generic [ref=e54]: "2"
+    - generic [ref=e55]:
+      - generic [ref=e56]: Total Referrals
+      - generic [ref=e57]: "4"
+  - heading "Referrals by Status" [level=2] [ref=e58]
+  - generic [ref=e59]:
+    - generic [ref=e60]:
+      - generic [ref=e61]: Pending
+      - generic [ref=e62]: "1"
+    - generic [ref=e63]:
+      - generic [ref=e64]: Eligible
+      - generic [ref=e65]: "0"
+    - generic [ref=e66]:
+      - generic [ref=e67]: Paid
+      - generic [ref=e68]: "2"
+    - generic [ref=e69]:
+      - generic [ref=e70]: Failed
+      - generic [ref=e71]: "1"
+  - heading "Payouts by Status" [level=2] [ref=e72]
+  - generic [ref=e73]:
+    - generic [ref=e74]:
+      - generic [ref=e75]: Pending
+      - generic [ref=e76]: $0.00
+    - generic [ref=e77]:
+      - generic [ref=e78]: Processed
+      - generic [ref=e79]: $50.00
+    - generic [ref=e80]:
+      - generic [ref=e81]: Failed
+      - generic [ref=e82]: $25.00
+    - generic [ref=e83]:
+      - generic [ref=e84]: Total Paid Out
+      - generic [ref=e85]: $75.00

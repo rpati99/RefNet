@@ -57,5 +57,15 @@ services:
       PAYOUT_CRON_SCHEDULE: ${PAYOUT_CRON_SCHEDULE:-0 * * * *}
     restart: unless-stopped
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      VITE_API_URL: http://localhost:3000
+    ports:
+      - "5173:4173"
+    restart: unless-stopped
+
 volumes:
   db_data:
