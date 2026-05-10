@@ -58,10 +58,13 @@ Read these files before writing the spec:
 - `AGENTS.md` — roadmap, conventions, schema
 - `app.py` — existing routes and structure
 - `database/db.py` — existing schema and functions
+- `api/src/routes/` — existing API routes
+- `api/src/controllers/` — existing request handlers
+- `api/src/services/` — existing business logic
+- `api/src/repos/` — existing raw SQL data access
+- `db/migrations/` — existing database schema and migrations
+- `frontend/` — existing React dashboard, if present
 - All files in `.opencode/specs/` — avoid duplicating existing specs
-
-Check `AGENTS.md` to confirm the requested step is not already
-marked complete. If it is, warn the user and stop.
 
 ## Step 7 — Write the spec
 Generate a spec document with this exact structure:
@@ -84,12 +87,16 @@ If no new routes: state "No new routes".
 
 ## Database changes
 Any new tables, columns, or constraints needed.
-Always verify against `database/db.py` before writing this.
+Always verify against `db/migrations/` and relevant repo files before writing this.
 If none: state "No database changes".
 
 ## Templates
 - **Create:** list new templates with their path
 - **Modify:** list existing templates and what changes
+
+## Frontend changes
+- **Create:** list new React components/pages with their path
+- **Modify:** list existing frontend files and what changes
 
 ## Files to change
 Every file that will be modified.
@@ -98,15 +105,16 @@ Every file that will be modified.
 Every new file that will be created.
 
 ## New dependencies
-Any new pip packages. If none: state "No new dependencies".
+Any new npm packages or Docker service changes. If none: state "No new dependencies".
 
 ## Rules for implementation
 Specific constraints Opencode model must follow. Always include:
-- No SQLAlchemy or ORMs
-- Parameterised queries only
-- Passwords hashed with werkzeug
-- Use CSS variables — never hardcode hex values
-- All templates extend `base.html`
+-  No ORMs
+- Parameterized queries only with the `pg` driver
+- Services handle business logic; repos handle raw SQL
+- Async errors propagate to the Express error handler
+- JWT auth remains stateless
+- Use CSS variables where applicable — never hardcode hex values
 
 ## Definition of done
 A specific testable checklist. Each item must be
