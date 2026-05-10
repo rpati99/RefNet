@@ -23,6 +23,7 @@ export async function processEligibleReferrals() {
 
     if (payout) {
       await payoutsRepo.updateReferralStatusToPaid(referral.id);
+      await payoutsRepo.markPayoutAsProcessed(payout.id);
       processed++;
       console.log(`[payout] Created payout ${payout.id} for referral ${referral.id} (order: ${referral.order_id})`);
     } else {
