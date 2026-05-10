@@ -38,6 +38,6 @@ tables: merchants, programs, referrals, payouts, webhook_events
 - Never commit directly to main.
 
 ## Skills
-- Skills load on demand via YAML frontmatter in `.claude/skills/`.
+- Skills load on demand via YAML frontmatter in `.opencode/skills/`.
 - Use `refnet-domain` skill for referral-specific patterns (idempotency, payout state machines, webhook dedup).
 - Keep skill bodies under 100 lines; reference external docs via @ imports for deeper detail.

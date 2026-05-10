@@ -18,7 +18,7 @@ This is the foundation. Every other feature (auth, referrals, webhooks, payouts,
 - [ ] **Initial migration** (`db/migrations/001_initial_schema.sql`): Creates all core tables with correct constraints, indexes, and enums. The full schema is defined in the next section.
 - [ ] **Health check endpoint**: `GET /health` returns 200 and JSON `{ status: "ok", db: "connected" }` after verifying the database pool can execute a simple query.
 - [ ] **Environment files**: `.env.example` with all required variables and dummy values. Actual `.env` is gitignored.
-- [ ] **Git setup**: `.gitignore` includes `node_modules`, `.env`, `dist`, Docker volumes. CLAUDE.md already exists.
+- [ ] **Git setup**: `.gitignore` includes `node_modules`, `.env`, `dist`, Docker volumes. AGENTS.md already exists.
 
 ## Data model changes
 The initial migration creates the following tables. This schema is designed to support the entire referral flow – from merchant program creation to payout processing – so we don't need to revisit core structures later.
@@ -132,7 +132,7 @@ This feature exposes only a health check endpoint. Full contracts for business e
 - **Response 503**: `{ "status": "error", "db": "disconnected" }` if DB is unreachable.
 
 ## Constraints
-- The tech stack is fixed as per CLAUDE.md: Node/Express, raw SQL (pg driver), PostgreSQL, Docker Compose. No ORM, no TypeScript at this stage (keep surface area small).
+- The tech stack is fixed as per AGENTS.md: Node/Express, raw SQL (pg driver), PostgreSQL, Docker Compose. No ORM, no TypeScript at this stage (keep surface area small).
 - Secrets (DB password, etc.) must be provided via environment variables, never hardcoded.
 - The migration runner must be idempotent: running `migrate.js` multiple times does nothing if no new files exist.
 - This scaffold must work on any machine with Docker installed – no global Node.js required (all runs inside containers).

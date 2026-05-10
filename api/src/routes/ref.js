@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { requireAuth } from "../middleware/auth.js";
 import { resolve } from "../controllers/advocatesController.js";
 
 const router = Router();
