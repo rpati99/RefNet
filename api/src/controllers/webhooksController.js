@@ -31,6 +31,9 @@ export async function postOrder(req, res, next) {
 
     res.status(200).json({ message: "Event processed" });
   } catch (err) {
+    if (err.status) {
+      return res.status(err.status).json({ error: err.message });
+    }
     next(err);
   }
 }

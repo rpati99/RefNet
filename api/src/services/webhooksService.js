@@ -14,8 +14,8 @@ export function verifyHmac(rawBody, signature) {
     .digest("hex");
   try {
     return crypto.timingSafeEqual(
-      Buffer.from(signature, "hex"),
-      Buffer.from(expected, "hex")
+      Buffer.from(signature.toLowerCase(), "hex"),
+      Buffer.from(expected.toLowerCase(), "hex")
     );
   } catch {
     return false;
