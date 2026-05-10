@@ -26,6 +26,18 @@ export async function processOrderEvent(payload) {
   const { referral_id, program_id, order_id, customer_email, timestamp } =
     payload;
 
+  if (!program_id) {
+    const err = new Error("Program not found");
+    err.status = 404;
+    throw err;
+  }
+
+  if (!referral_id) {
+    const err = new Error("Referral not found");
+    err.status = 404;
+    throw err;
+  }
+
   const program = await programsRepo.findByIdAny(program_id);
   if (!program) {
     const err = new Error("Program not found");
