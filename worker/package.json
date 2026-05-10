@@ -1,0 +1,18 @@
+{
+  "name": "refnet-worker",
+  "version": "0.1.0",
+  "description": "RefNet cron worker for payout processing",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "node-cron": "^3.0.3",
+    "pg": "^8.11.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
