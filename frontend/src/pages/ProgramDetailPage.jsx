@@ -22,6 +22,7 @@ export default function ProgramDetailPage() {
 
   if (loading) return <div className="page"><div className="loading">Loading...</div></div>;
   if (error) return <div className="page"><div className="error-banner">{error}</div></div>;
+  if (!data) return <div className="page"><div className="error-banner">Failed to load program</div></div>;
 
   const { program, advocateCount, referralsByStatus, payoutsByStatus, totalPayoutsCents } = data;
 

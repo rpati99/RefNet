@@ -1,5 +1,11 @@
 {
   "devDependencies": {
+    "@testing-library/react": "^16.3.2",
+    "@vitejs/plugin-react": "^4.7.0",
+    "jsdom": "^26.1.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^6.30.3",
     "vitest": "^3.2.4"
   },
   "dependencies": {
