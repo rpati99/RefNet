@@ -5,6 +5,7 @@ import healthRouter from "./routes/health.js";
 import authRouter from "./routes/auth.js";
 import programsRouter from "./routes/programs.js";
 import advocatesRouter from "./routes/advocates.js";
+import refRouter from "./routes/ref.js";
 
 config();
 
@@ -18,6 +19,7 @@ app.use("/api/health", healthRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/programs", programsRouter);
 app.use("/api/programs", advocatesRouter);
+app.use("/api/ref", refRouter);
 
 app.use((req, res) => {
   res.status(404).json({ error: "Not found" });
