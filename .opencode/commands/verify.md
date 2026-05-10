@@ -1,6 +1,6 @@
 ---
 description: Verify a completed feature against its spec's acceptance criteria
-argument-hint: @.claude/commands/create-spec.md
+argument-hint: @.opencode/commands/create-spec.md
 ---
 
 Read the spec: **$ARGUMENTS**.
