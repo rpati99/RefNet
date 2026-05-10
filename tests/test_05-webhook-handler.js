@@ -56,6 +56,7 @@ const VALID_PAYLOAD = {
 describe('Webhook Handler Feature Tests', () => {
 
   beforeEach(() => {
+    vi.resetModules();
     query.mockReset();
   });
 
@@ -95,7 +96,7 @@ describe('Webhook Handler Feature Tests', () => {
       await postOrder(req, res, next);
 
       expect(res.status).toHaveBeenCalledWith(401);
-      expect(res.json).toHaveBeenCalledWith({ error: 'Invalid webhook signature' });
+      expect(res.json).toHaveBeenCalledWith({ error: 'Authentication failed' });
     });
 
     it('returns 401 when HMAC secret is not configured', async () => {
