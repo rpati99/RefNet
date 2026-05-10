@@ -1,0 +1,1 @@
+ALTER TABLE payouts ADD COLUMN processed_at TIMESTAMPTZ;
