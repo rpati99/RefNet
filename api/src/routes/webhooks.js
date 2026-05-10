@@ -6,13 +6,12 @@ const router = Router();
 router.post(
   "/order",
   (req, res, next) => {
-    let data = "";
-    req.setEncoding("buffer");
+    const chunks = [];
     req.on("data", (chunk) => {
-      data += chunk;
+      chunks.push(chunk);
     });
     req.on("end", () => {
-      req.rawBody = Buffer.from(data);
+      req.rawBody = Buffer.concat(chunks);
       next();
     });
   },

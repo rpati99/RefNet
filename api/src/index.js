@@ -14,6 +14,7 @@ const app = express();
 const PORT = parseInt(process.env.PORT ?? "3000", 10);
 
 app.use(cors());
+app.use("/webhooks", webhooksRouter);
 app.use(express.json());
 
 app.use("/api/health", healthRouter);
@@ -21,7 +22,6 @@ app.use("/api/auth", authRouter);
 app.use("/api/programs", programsRouter);
 app.use("/api/programs", advocatesRouter);
 app.use("/api/ref", refRouter);
-app.use("/webhooks", webhooksRouter);
 
 app.use((req, res) => {
   res.status(404).json({ error: "Not found" });
