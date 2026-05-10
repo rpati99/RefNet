@@ -1,0 +1,33 @@
+- generic [ref=e86]:
+  - generic [ref=e87]:
+    - heading "Dashboard" [level=1] [ref=e88]
+    - button "Sign Out" [ref=e89] [cursor=pointer]
+  - generic [ref=e90]:
+    - generic [ref=e91]:
+      - generic [ref=e92]: Total Referrals
+      - generic [ref=e93]: "4"
+    - generic [ref=e94]:
+      - generic [ref=e95]: Eligible
+      - generic [ref=e96]: "0"
+    - generic [ref=e97]:
+      - generic [ref=e98]: Total Payouts
+      - generic [ref=e99]: $75.00
+    - generic [ref=e100]:
+      - generic [ref=e101]: Pending Payouts
+      - generic [ref=e102]: $0.00
+  - table [ref=e103]:
+    - rowgroup [ref=e104]:
+      - row "Program Status Total Referrals Reward" [ref=e105]:
+        - columnheader "Program" [ref=e106]
+        - columnheader "Status" [ref=e107]
+        - columnheader "Total Referrals" [ref=e108]
+        - columnheader "Reward" [ref=e109]
+    - rowgroup [ref=e110]:
+      - row "Referral Program 2026 Active 0 $25.00" [ref=e111]:
+        - cell "Referral Program 2026" [ref=e112]:
+          - link "Referral Program 2026" [ref=e113] [cursor=pointer]:
+            - /url: /dashboard/programs/375a8948-d631-4e2c-a8b0-050975d96b8b
+        - cell "Active" [ref=e114]:
+          - generic [ref=e115]: Active
+        - cell "0" [ref=e116]
+        - cell "$25.00" [ref=e117]

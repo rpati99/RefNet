@@ -1,0 +1,12 @@
+- generic [ref=e119]:
+  - heading "RefNet Sign In" [level=1] [ref=e120]
+  - generic [ref=e121]:
+    - generic [ref=e122]:
+      - generic [ref=e123]: Email
+      - textbox "Email" [ref=e124]:
+        - /placeholder: you@example.com
+    - generic [ref=e125]:
+      - generic [ref=e126]: Password
+      - textbox "Password" [ref=e127]:
+        - /placeholder: ••••••••
+    - button "Sign In" [ref=e128] [cursor=pointer]
