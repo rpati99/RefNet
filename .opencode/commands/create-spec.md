@@ -1,5 +1,5 @@
 ---
-description: Create a spec file and feature branch for the next Spendly step
+description: Create a spec file and feature branch for the next Refnet step
 argument-hint: "Step number and feature name e.g. 2 registration"
 allowed-tools: Read, Write, Glob, Bash(git:*)
 ---
@@ -56,8 +56,6 @@ git checkout -b <branch_name>
 ## Step 6 — Research the codebase
 Read these files before writing the spec:
 - `AGENTS.md` — roadmap, conventions, schema
-- `app.py` — existing routes and structure
-- `database/db.py` — existing schema and functions
 - `api/src/routes/` — existing API routes
 - `api/src/controllers/` — existing request handlers
 - `api/src/services/` — existing business logic
