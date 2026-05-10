@@ -31,8 +31,13 @@ export async function postOrder(req, res, next) {
 
     res.status(200).json({ message: "Event processed" });
   } catch (err) {
+    const safeMessages = {
+      401: "Authentication failed",
+      404: "Resource not found",
+      500: "Internal server error"
+    };
     if (err.status) {
-      return res.status(err.status).json({ error: err.message });
+      return res.status(err.status).json({ error: safeMessages[err.status] || "Request failed" });
     }
     next(err);
   }
