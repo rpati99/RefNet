@@ -3,6 +3,7 @@ import cors from "cors";
 import { config } from "dotenv";
 import healthRouter from "./routes/health.js";
 import authRouter from "./routes/auth.js";
+import programsRouter from "./routes/programs.js";
 
 config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 
 app.use("/api/health", healthRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/programs", programsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ error: "Not found" });
