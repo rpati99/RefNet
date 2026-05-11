@@ -1,4 +1,4 @@
-# RefNet — Referral Platform Demo
+# RefNet — Referral Platform
 
 A full-stack referral platform with JWT auth, webhook-driven payouts, and a React dashboard.
 
