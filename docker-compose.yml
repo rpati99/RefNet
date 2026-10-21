@@ -34,6 +34,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       JWT_SECRET: ${JWT_SECRET}
       WEBHOOK_HMAC_SECRET: ${WEBHOOK_HMAC_SECRET}
+      ENABLE_DEMO_ORDERS: ${ENABLE_DEMO_ORDERS:-false}
     volumes:
       - ./db:/app/db:ro
     ports:

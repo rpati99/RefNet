@@ -17,6 +17,8 @@ export async function fetchWithAuth(url, options = {}) {
     throw new Error("Unauthorized");
   }
 
+  if (res.status === 204 && res.ok) return null;
+
   const contentType = res.headers.get("content-type");
   if (!contentType?.includes("application/json")) {
     throw new Error(`Request failed with status ${res.status}`);

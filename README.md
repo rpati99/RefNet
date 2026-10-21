@@ -73,6 +73,17 @@ docker compose exec api node /app/db/seed.js
 
 ## API Reference
 
+### Browser demo orders (local use only)
+
+Set `ENABLE_DEMO_ORDERS=true` in your local `.env`, then rebuild the API and frontend:
+`docker compose up -d --build api frontend`.
+While signed in as the program owner, open an advocate's referral link in the same
+browser, enter a test customer email, and click **Simulate test order**.
+Use **View program results** to see the eligible referral. The worker processes
+payouts on its configured schedule; no real payment is made.
+This writes demo data to the database. Keep this flag disabled on public deployments.
+Requests require authentication and ownership; retries reuse the same order identity.
+
 ### Authentication
 
 | Method | Path | Description |

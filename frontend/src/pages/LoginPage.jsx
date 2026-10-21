@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { fetchWithAuth } from "../lib/api.js";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
 
@@ -12,8 +11,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
 
   if (localStorage.getItem("token")) {
-    navigate("/dashboard", { replace: true });
-    return null;
+    return <Navigate to="/dashboard" replace />;
   }
 
   async function handleSubmit(e) {
@@ -93,6 +91,7 @@ export default function LoginPage() {
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
+        <p style={{ marginTop: "1rem" }}>New here? <Link to="/signup">Create an account</Link></p>
       </div>
     </div>
   );

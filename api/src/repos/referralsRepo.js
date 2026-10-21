@@ -5,16 +5,16 @@ export async function findById(id) {
   return result.rows[0] ?? null;
 }
 
-export async function findByIdWithProgramCheck(id, programId) {
-  const result = await pool.query(
+export async function findByIdWithProgramCheck(id, programId, db = pool) {
+  const result = await db.query(
     "SELECT * FROM referrals WHERE id = $1 AND program_id = $2",
     [id, programId]
   );
   return result.rows[0] ?? null;
 }
 
-export async function updateWithOrder(id, { orderId, customerEmail, signupTs }) {
-  const result = await pool.query(
+export async function updateWithOrder(id, { orderId, customerEmail, signupTs }, db = pool) {
+  const result = await db.query(
     `UPDATE referrals
      SET order_id = $2, customer_email = $3, signup_ts = $4,
          status = 'eligible', updated_at = now()

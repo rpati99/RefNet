@@ -16,8 +16,8 @@ export async function findById(id, merchantId) {
   return result.rows[0] ?? null;
 }
 
-export async function findByIdAny(id) {
-  const result = await pool.query("SELECT * FROM programs WHERE id = $1", [id]);
+export async function findByIdAny(id, db = pool) {
+  const result = await db.query("SELECT * FROM programs WHERE id = $1", [id]);
   return result.rows[0] ?? null;
 }
 

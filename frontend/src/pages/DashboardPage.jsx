@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchWithAuth } from "../lib/api.js";
 import StatCard from "../components/StatCard.jsx";
 import ProgramRow from "../components/ProgramRow.jsx";
+import ProgramForm from "../components/ProgramForm.jsx";
 
 function formatCents(cents) {
   return `$${(cents / 100).toFixed(2)}`;
@@ -13,6 +14,7 @@ export default function DashboardPage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [creating, setCreating] = useState(false);
 
   function handleSignOut() {
     localStorage.removeItem("token");
@@ -35,10 +37,13 @@ export default function DashboardPage() {
     <div className="page">
       <div className="page-header">
         <h1 className="page-title">Dashboard</h1>
-        <button className="btn btn-ghost" onClick={handleSignOut}>
+        <div className="actions"><Link className="btn btn-ghost" to="/account">Account</Link><button className="btn btn-ghost" onClick={handleSignOut}>
           Sign Out
-        </button>
+        </button></div>
       </div>
+
+      <div className="actions section-heading"><h2>Programs</h2><button className="btn btn-primary" onClick={() => setCreating(true)}>New program</button></div>
+      {creating && <ProgramForm onCancel={() => setCreating(false)} onSaved={(program) => navigate(`/dashboard/programs/${program.id}`)} />}
 
       <div className="stats-grid">
         <StatCard label="Total Referrals" value={totalReferrals} />
@@ -51,7 +56,7 @@ export default function DashboardPage() {
         <div className="empty-state">
           <p>No programs yet.</p>
           <p style={{ marginTop: "0.5rem", fontSize: "0.875rem" }}>
-            Create your first program via the API.
+            Use New program above to create your first referral program.
           </p>
         </div>
       ) : (

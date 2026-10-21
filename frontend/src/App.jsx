@@ -1,8 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import LoginPage from "./pages/LoginPage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
 import ProgramDetailPage from "./pages/ProgramDetailPage.jsx";
+import SignupPage from "./pages/SignupPage.jsx";
+import ReferralPage from "./pages/ReferralPage.jsx";
+import AccountPage from "./pages/AccountPage.jsx";
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("token");
@@ -16,6 +18,9 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/ref/:referralCode" element={<ReferralPage />} />
+      <Route path="/account" element={<ProtectedRoute><AccountPage /></ProtectedRoute>} />
       <Route
         path="/dashboard"
         element={
