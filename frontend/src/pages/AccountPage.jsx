@@ -23,7 +23,6 @@ export default function AccountPage() {
         <dt>Account ID</dt><dd>{merchant.id}</dd>
         <dt>Created</dt><dd>{new Date(merchant.created_at).toLocaleString()}</dd>
       </dl>
-      <p>Account details are read-only.</p>
     </section>}
   </main>;
 }
