@@ -26,7 +26,6 @@ export default function DemoOrderForm({ referralCode }) {
 
   return <section className="panel">
     <h2>Simulate a test order</h2>
-    <p>Owner-only demo. This creates real demo records in your database, but does not charge anyone or send money.</p>
     {error && <p className="error-banner" role="alert">{error}</p>}
     {result ? <div role="status">
       <p>{result.duplicate ? "This test order was already recorded." : "Test order recorded! The referral is now eligible."}</p>

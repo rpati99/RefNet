@@ -32,7 +32,7 @@ export default function ReferralPage() {
       <p>{data.program.rewardDescription}</p>
       <p>Referral reward: ${(data.program.rewardAmountCents / 100).toFixed(2)}</p>
       <p>Referral code: <strong>{data.referralCode}</strong></p>
-      <p>This demo displays referral details. Purchases are recorded through the merchant’s order integration.</p>
+      <p>Purchases are recorded through the merchant’s order integration.</p>
       {canSimulate && <DemoOrderForm key={referralCode} referralCode={referralCode} />}
     </>}
   </section></main>;
