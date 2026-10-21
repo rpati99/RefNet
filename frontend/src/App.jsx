@@ -5,6 +5,7 @@ import ProgramDetailPage from "./pages/ProgramDetailPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import ReferralPage from "./pages/ReferralPage.jsx";
 import AccountPage from "./pages/AccountPage.jsx";
+import RecordsPage from "./pages/RecordsPage.jsx";
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("token");
@@ -21,6 +22,7 @@ export default function App() {
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/ref/:referralCode" element={<ReferralPage />} />
       <Route path="/account" element={<ProtectedRoute><AccountPage /></ProtectedRoute>} />
+      <Route path="/records" element={<ProtectedRoute><RecordsPage /></ProtectedRoute>} />
       <Route
         path="/dashboard"
         element={
