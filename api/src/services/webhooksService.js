@@ -22,18 +22,18 @@ export function verifyHmac(rawBody, signature) {
   }
 }
 
-export async function processOrderEvent(payload) {
+export async function processOrderEvent(payload, { programs = programsRepo, referrals = referralsRepo } = {}) {
   const { referral_id, program_id, order_id, customer_email, timestamp } =
     payload;
 
-  const program = await programsRepo.findByIdAny(program_id);
+  const program = await programs.findByIdAny(program_id);
   if (!program) {
     const err = new Error("Program not found");
     err.status = 404;
     throw err;
   }
 
-  const referral = await referralsRepo.findByIdWithProgramCheck(
+  const referral = await referrals.findByIdWithProgramCheck(
     referral_id,
     program_id
   );
@@ -44,7 +44,7 @@ export async function processOrderEvent(payload) {
   }
 
   const signupTs = timestamp ? new Date(timestamp) : new Date();
-  await referralsRepo.updateWithOrder(referral_id, {
+  await referrals.updateWithOrder(referral_id, {
     orderId: order_id,
     customerEmail: customer_email,
     signupTs,
@@ -53,7 +53,7 @@ export async function processOrderEvent(payload) {
   return referral;
 }
 
-export async function handleWebhook(rawBody, signature, payload) {
+export async function handleWebhook(rawBody, signature, payload, { webhooks = webhooksRepo, ...orderRepos } = {}) {
   if (!verifyHmac(rawBody, signature)) {
     const err = new Error("Invalid webhook signature");
     err.status = 401;
@@ -62,7 +62,7 @@ export async function handleWebhook(rawBody, signature, payload) {
 
   const { event_id, event_type } = payload;
 
-  const record = await webhooksRepo.createWithIdempotency({
+  const record = await webhooks.createWithIdempotency({
     eventId: event_id,
     eventType: event_type,
     payload,
@@ -73,9 +73,9 @@ export async function handleWebhook(rawBody, signature, payload) {
   }
 
   if (event_type === "order.completed") {
-    await processOrderEvent(payload);
+    await processOrderEvent(payload, orderRepos);
   }
 
-  await webhooksRepo.markProcessed(event_id);
+  await webhooks.markProcessed(event_id);
   return { duplicate: false };
 }

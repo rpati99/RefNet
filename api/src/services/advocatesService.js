@@ -99,6 +99,8 @@ export async function resolve(referralCode) {
 
   return {
     email: advocate.email,
+    demoOrdersEnabled: process.env.ENABLE_DEMO_ORDERS === "true",
+    programId: advocate.program_id,
     referralCode: advocate.referral_code,
     program: {
       name: advocate.program_name,
