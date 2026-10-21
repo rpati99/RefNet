@@ -37,7 +37,7 @@ export default function DashboardPage() {
     <div className="page">
       <div className="page-header">
         <h1 className="page-title">Dashboard</h1>
-        <div className="actions"><Link className="btn btn-ghost" to="/account">Account</Link><button className="btn btn-ghost" onClick={handleSignOut}>
+        <div className="actions"><Link className="btn btn-ghost" to="/records">Records</Link><Link className="btn btn-ghost" to="/account">Account</Link><button className="btn btn-ghost" onClick={handleSignOut}>
           Sign Out
         </button></div>
       </div>

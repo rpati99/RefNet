@@ -17,3 +17,11 @@
 - Status and amount of a missing payout show Not created and a dash, not zero paid.
 - Links to programs and full record IDs visible; horizontal table scroll on mobile.
 - No schema changes; existing forms and worker remain unchanged.
+
+## Verification results
+- 156 tests passed across 9 suites, including 8 new records tests.
+- Existing worker suite excluded due to previously missing root node-cron dependency.
+- API and frontend Docker builds passed; containers rebuilt and running.
+- Playwright verified record fields, per-program/all-program views, refresh and
+  mobile containment; unauthenticated API returned 401, another merchant's program
+  returned no records. A new smoke order was created only in the test account.

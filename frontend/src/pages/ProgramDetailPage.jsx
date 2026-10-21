@@ -41,7 +41,7 @@ export default function ProgramDetailPage() {
           <p>{program.is_active ? "Active" : "Inactive"} · Reward: {formatCents(program.reward_amount_cents)}</p>
           <p>{program.reward_description}</p>
         </div>
-        <button className="btn btn-ghost" onClick={() => setEditing(true)}>Edit program</button>
+        <div className="actions"><Link className="btn btn-ghost" to={`/records?programId=${programId}`}>View records</Link><button className="btn btn-ghost" onClick={() => setEditing(true)}>Edit program</button></div>
       </div>
 
       {editing && <ProgramForm program={program} onCancel={() => setEditing(false)} onSaved={() => { setEditing(false); setRevision((value) => value + 1); }} />}
