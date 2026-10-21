@@ -24,3 +24,11 @@ Let merchants register, manage programs, and enroll advocates without Postman.
 Run Vitest and Vite build, then check signup, program creation/edit, advocate enrollment,
 duplicate handling, referral navigation, and existing login in the browser.
 The repository's /verify command is locally deleted; preserve that user change.
+
+## Results
+- Production build passed; frontend Docker container rebuilt and running.
+- 134 tests passed, including 5 new form tests. Worker suite cannot load because
+  node-cron is not installed in the root test environment (existing dependency issue).
+- Browser smoke passed: signup, create program ($12.34), edit program, enroll
+  advocate, duplicate rejection, and public referral link with updated program data.
+- Smoke data was created in a separate browser-smoke account, not the user's account.

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchWithAuth } from "../lib/api.js";
 import StatCard from "../components/StatCard.jsx";
+import ProgramForm from "../components/ProgramForm.jsx";
+import AdvocatesPanel from "../components/AdvocatesPanel.jsx";
 
 function formatCents(cents) {
   return `$${(cents / 100).toFixed(2)}`;
@@ -12,13 +14,15 @@ export default function ProgramDetailPage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [editing, setEditing] = useState(false);
+  const [revision, setRevision] = useState(0);
 
   useEffect(() => {
     fetchWithAuth(`/api/dashboard/programs/${programId}`)
       .then(setData)
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, [programId]);
+  }, [programId, revision]);
 
   if (loading) return <div className="page"><div className="loading">Loading...</div></div>;
   if (error) return <div className="page"><div className="error-banner">{error}</div></div>;
@@ -34,8 +38,14 @@ export default function ProgramDetailPage() {
             &larr; Back to Dashboard
           </Link>
           <h1 className="page-title">{program.name}</h1>
+          <p>{program.is_active ? "Active" : "Inactive"} · Reward: {formatCents(program.reward_amount_cents)}</p>
+          <p>{program.reward_description}</p>
         </div>
+        <button className="btn btn-ghost" onClick={() => setEditing(true)}>Edit program</button>
       </div>
+
+      {editing && <ProgramForm program={program} onCancel={() => setEditing(false)} onSaved={() => { setEditing(false); setRevision((value) => value + 1); }} />}
+      <AdvocatesPanel key={programId} programId={programId} onChanged={() => setRevision((value) => value + 1)} />
 
       <div className="stats-grid" style={{ marginBottom: "1.5rem" }}>
         <StatCard label="Advocates" value={advocateCount} />
