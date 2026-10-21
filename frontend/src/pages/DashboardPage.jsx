@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchWithAuth } from "../lib/api.js";
 import StatCard from "../components/StatCard.jsx";
 import ProgramRow from "../components/ProgramRow.jsx";
@@ -37,9 +37,9 @@ export default function DashboardPage() {
     <div className="page">
       <div className="page-header">
         <h1 className="page-title">Dashboard</h1>
-        <button className="btn btn-ghost" onClick={handleSignOut}>
+        <div className="actions"><Link className="btn btn-ghost" to="/account">Account</Link><button className="btn btn-ghost" onClick={handleSignOut}>
           Sign Out
-        </button>
+        </button></div>
       </div>
 
       <div className="actions section-heading"><h2>Programs</h2><button className="btn btn-primary" onClick={() => setCreating(true)}>New program</button></div>

@@ -15,3 +15,10 @@
 - Account page shows email, company, account ID, created date, with error/loading states.
 - No new backend capability or program deletion change.
 - Preserve existing edits to DemoOrderForm.jsx and ReferralPage.jsx and deleted verify command.
+
+## Results
+- 148 tests passed in 8 suites (worker suite excluded: previously missing node-cron).
+- Frontend Docker production build passed; container updated.
+- Browser verified account details, custom-code referral link, and removal using
+  a newly created smoke advocate only. Existing advocates/history were preserved.
+- Tests cover canceled/failed removal, 204 responses, account errors and custom code.
